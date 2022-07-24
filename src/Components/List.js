@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { movies } from "./getMovies";
 import axios from "axios";
-import {API_KEY} from "../secret";
+import { API_KEY } from "../secret";
 
 export default class List extends Component {
   constructor() {
@@ -26,33 +26,39 @@ export default class List extends Component {
     });
   };
 
-  changeMovies = async () =>{
+  changeMovies = async () => {
     let ans = await axios.get(
       `https://api.themoviedb.org/3/movie/popular/?api_key=${API_KEY}&language=en-US&page=${this.state.currPage}`
     );
     this.setState({
       movies: [...ans.data.results],
     });
-  }
+  };
 
-  handleNext = () =>{
+  handleNext = () => {
     let tempArr = [];
-    for(let i=1;i<=this.state.parr.length+1;i++){
-       tempArr.push(i);
+    for (let i = 1; i <= this.state.parr.length + 1; i++) {
+      tempArr.push(i);
     }
-    this.setState({
-      parr: [...tempArr],
-      currPage : this.state.currPage+1
-    },this.changeMovies);
-  }
+    this.setState(
+      {
+        parr: [...tempArr],
+        currPage: this.state.currPage + 1,
+      },
+      this.changeMovies
+    );
+  };
 
-  handlePrev = () =>{
-    if(this.state.currPage!=1){
-      this.setState({
-        currPage:this.state.currPage-1
-      },this.changeMovies);
+  handlePrev = () => {
+    if (this.state.currPage != 1) {
+      this.setState(
+        {
+          currPage: this.state.currPage - 1,
+        },
+        this.changeMovies
+      );
     }
-  }
+  };
 
   async componentDidMount() {
     let ans = await axios.get(
@@ -113,15 +119,13 @@ export default class List extends Component {
                       Previous
                     </a>
                   </li>
-                  {
-                    this.state.parr.map(pageNum => (
-                      <li class="page-item">
+                  {this.state.parr.map((pageNum) => (
+                    <li class="page-item">
                       <a class="page-link" href="#">
                         {pageNum}
                       </a>
                     </li>
-                    ))
-                  }
+                  ))}
                   <li class="page-item">
                     <a class="page-link" onClick={this.handleNext}>
                       Next
