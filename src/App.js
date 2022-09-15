@@ -1,15 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Banner from './Components/Banner';
 import List from './Components/List';
+import Favourite from './Components/Favourite';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
     <>
-       <Navbar/>
-       <Banner/>
-       <List/>
+       <BrowserRouter>
+         <Navbar/>
+         <Routes>
+           <Route path='/' 
+             element={
+               <>
+                 <Banner/>
+                 <List/>
+               </>
+              }
+             />
+           <Route path='/favourite' element={<Favourite/>}/>
+         </Routes>
+       </BrowserRouter>
     </>
   );
 }

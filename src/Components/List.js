@@ -60,6 +60,15 @@ export default class List extends Component {
     }
   };
 
+  handlePageNum = (pageNum) =>{
+    this.setState(
+      {
+      currPage:pageNum,
+      },
+      this.changeMovies
+    )
+  }
+
   async componentDidMount() {
     let ans = await axios.get(
       `https://api.themoviedb.org/3/movie/popular/?api_key=${API_KEY}&language=en-US&page=${this.state.currPage}`
@@ -121,7 +130,7 @@ export default class List extends Component {
                   </li>
                   {this.state.parr.map((pageNum) => (
                     <li class="page-item">
-                      <a class="page-link" href="#">
+                      <a class="page-link" onClick={() => {this.handlePageNum(pageNum)}}>
                         {pageNum}
                       </a>
                     </li>
