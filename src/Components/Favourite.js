@@ -181,23 +181,23 @@ export default class Favourite extends Component {
 
     return (
     <div className="container-fluid">
-      <div class="row">
-        <div class="col-3 favourites-list">
-          <ul class="list-group">
+      <div className="row">
+        <div className="col-3 favourites-list">
+          <ul className="list-group">
           {this.state.genre.map((genre) =>
             this.state.currGenre == genre ? (
-              <li class="list-group-item active" aria-current="true">
+              <li className="list-group-item active" aria-current="true">
                 {genre}
               </li>
             ) : (
-              <li class="list-group-item" aria-current="true" onClick={() => this.handleCurrGenre(genre)} >
+              <li className="list-group-item" aria-current="true" onClick={() => this.handleCurrGenre(genre)} >
                 {genre}
               </li>
             )
           )}
           </ul>
         </div>
-        <div class="col favourites-table" >
+        <div className="col favourites-table" >
           <div className="row">
                <input type="text" className="col" placeholder="search" value={this.state.currText} onChange={this.handleText}></input>
                <input type="number" className="col" 
@@ -206,20 +206,20 @@ export default class Favourite extends Component {
                ></input>
           </div>
           <div className="row">
-          <table class="table">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Genere</th>
                 <th scope="col">
-                  <i class="fa-solid fa-caret-up" onClick={this.sortPopularityAsc}></i>
+                  <i className="fa-solid fa-caret-up" onClick={this.sortPopularityAsc}></i>
                   Popularity
-                  <i class="fa-solid fa-caret-down" onClick={this.sortPopularityDesc}></i>
+                  <i className="fa-solid fa-caret-down" onClick={this.sortPopularityDesc}></i>
                 </th>
                 <th scope="col">
-                  <i class="fa-solid fa-caret-up" onClick={this.sortRatingAsc}></i>
+                  <i className="fa-solid fa-caret-up" onClick={this.sortRatingAsc}></i>
                   Rating
-                  <i class="fa-solid fa-caret-down" onClick={this.sortRatingDesc}></i>
+                  <i className="fa-solid fa-caret-down" onClick={this.sortRatingDesc}></i>
                 </th>
                 <th scope="col">Action</th>
               </tr>
@@ -239,7 +239,7 @@ export default class Favourite extends Component {
                 <td>{movieObj.popularity}</td>
                 <td>{movieObj.vote_average}</td>
                 <td><button
-                class="btn btn-outline-danger"  onClick={() => this.handleDelete(movieObj.id)}>Delete</button></td>
+                className="btn btn-outline-danger"  onClick={() => this.handleDelete(movieObj.id)}>Delete</button></td>
                 </tr>
               ))}
             </tbody>
@@ -248,10 +248,10 @@ export default class Favourite extends Component {
         </div>
       </div>
       <nav aria-label="Page navigation example">
-          <ul class="pagination">
+          <ul className="pagination">
             {pagesArr.map((page) => (
-              <li class="page-item">
-                <a class="page-link" onClick={() => this.handlePageNum(page)}>
+              <li className="page-item">
+                <a className="page-link" onClick={() => this.handlePageNum(page)}>
                   {page}
                 </a>
               </li>
